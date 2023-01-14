@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Randomizations</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Samuel Shubert's learning project - Randomizations">
+    <meta name="keywords" content="Samuel, Shubert, random, randomizations, dice, numbers, alphabets, web, developer">
+    <meta name="author" content="Samuel Shubert">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/tabicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Seymour+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css files/mainView.css">
+    <link rel="stylesheet" href="css files/diceView.css">
+    <link rel="stylesheet" href="css files/numbersView.css">
+    <link rel="stylesheet" href="css files/entriesView.css">
+
+    <script src="scripts/mainView.js"></script>
+    <script src="scripts/diceView.js"></script>
+    <script src="scripts/numbersView.js"></script>
+    <script src="scripts/alphabetsView.js"></script>
+    <script src="scripts/entriesView.js"></script>
+</head>
+
+<body onload="runFirst()">
+
+    <header id="tabsBar">
+        <button onclick="changeView(this, 'HomeSubSettings')" class="tabButton tabButtonHover" id="HomeTab">
+            <img src="assets/HomeIcon.png" class="tabImg">
+        </button>
+        <button onclick="changeView(this, 'DiceSubSettings')" class="tabButton tabButtonHover" id="DiceTab">
+            <img src="assets/DiceIcon.png" class="tabImg">
+        </button>
+        <button onclick="changeView(this, 'NumbersSubSettings')" class="tabButton tabButtonHover" id="NumbersTab">
+            <img src="assets/NumbersIcon.png" class="tabImg">
+        </button>
+        <button onclick="changeView(this, 'AlphabetsSubSettings')" class="tabButton tabButtonHover" id="AlphabetsTab">
+            <img src="assets/AlphabetsIcon.png" class="tabImg">
+        </button>
+        <button onclick="changeView(this, 'EntriesSubSettings')" class="tabButton tabButtonHover" id="EntriesTab">
+            <img src="assets/EntriesIcon.png" class="tabImg">
+        </button>
+
+
+    </header>
+
+    <div id="mainView">
+        <div id="SettingsID" class="SettingsCont">
+            <div id="HomeSubSettings" class="SubSettings">
+                <p id="author">Created by Samuel Shubert<br>This website is still in development and<br> may contain few bugs here and there</p>
+            </div>
+
+            <div id="DiceSubSettings" class="SubSettings">
+                <div class="SetNoOfDiceDiv">
+                    <button id="SetNoOfDice1" class="SetNoOfDice" onclick="DiceSet(0)">One</button>
+                    <button id="SetNoOfDice2" class="SetNoOfDice" onclick="DiceSet(1)">Two</button>
+                    <button id="SetNoOfDice3" class="SetNoOfDice" onclick="DiceSet(2)">Three</button>
+                </div>
+                <button onclick="rollDice()" class="RandomizeButton">Roll</button>
+            </div>
+
+            <div id="NumbersSubSettings" class="SubSettings">
+                <input type="number" id="fromTxtFld" class="TxtFlds" placeholder="From" value="1" maxlength="14">
+                <input type="number" id="toTxtFld" class="TxtFlds" placeholder="To" value="10" maxlength="14">
+                <div class="NumberSetTypeDiv">
+                    <button id="NumberSetTypeButton1" class="NumberSetTypeButton" onclick="SetNumberType(0)">x 10<sup>0</sup></button>
+                    <button id="NumberSetTypeButton2" class="NumberSetTypeButton" onclick="SetNumberType(1)">x 10<sup>-2</sup></button>
+                    <button id="NumberSetTypeButton3" class="NumberSetTypeButton" onclick="SetNumberType(2)">x 10<sup>-4</sup></button>
+                </div>
+                <button onclick="randomNumber()" class="RandomizeButton">Randomize</button>
+            </div>
+
+            <div id="AlphabetsSubSettings" class="SubSettings">
+                <button onclick="randomAlphabet()" class="RandomizeButton">Randomize</button>
+            </div>
+
+            <div id="EntriesSubSettings" class="SubSettings">
+                <!-- <input type="text" id="EntriesTxtFld" class="TxtFlds" placeholder="Entries" maxlength="25"> -->
+                <p id="entriesPara">Still in development...</p>
+                <!-- <button onclick="randomEntry()" class="RandomizeButton">Randomize</button> -->
+            </div>
+        </div>
+
+        <div class="Results">
+            <p id="otherResults">Randomizations</p>
+            <p id="alphabetsResults"></p>
+            <div id="DiceResults">
+                <img id="Dice1" class="DiceClass">
+                <img id="Dice2" class="DiceClass">
+                <img id="Dice3" class="DiceClass">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

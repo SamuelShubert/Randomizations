@@ -1,0 +1,152 @@
+body {
+    height: 100%;
+    margin: 0;
+    background-color: #e7e7e7;
+    font-size: 16px;
+}
+
+#tabsBar {
+    height: 11vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.tabButton {
+    height: 50px;
+    width: 100px;
+    background-color: #fff;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 5px;
+    border: none;
+    transition: all 150ms;
+}
+
+.tabButtonSelected {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.tabButtonHover:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.tabImg {
+    height: 100%;
+    width: auto;
+}
+
+#mainView {
+    width: 100%;
+    height: 89vh;
+    display: flex;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.SettingsCont {
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 86, 86, 0.3);
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    align-self: flex-start;
+    box-sizing: border-box;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+.SubSettings {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    /* font-size: 16px; */
+}
+
+#author {
+    color: rgb(100, 100, 100);
+    /* font-size: 1.1em; */
+    font-weight: lighter;
+}
+
+.TxtFlds {
+    text-align: center;
+    /* font-weight: bold; */
+    /* color: rgb(31, 31, 31); */
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 8px;
+    height: 32px;
+    width: 100%;
+    box-shadow: 0 0 2px #ff5050 inset;
+    /* margin-bottom: -4px; */
+    padding: 0;
+}
+
+.RandomizeButton {
+    border: none;
+    border-radius: 8px;
+    font-size: large;
+    width: 100%;
+    height: 44px;
+    color: white;
+    background-color: #008cff;
+    box-shadow: 0 0 4px #1362ca inset;
+    transition: all 0.2s;
+}
+
+.RandomizeButton:hover {
+    box-shadow: 0 0 20px 0 #135ab8 inset;
+}
+
+.Results {
+    margin: auto;
+    text-align: center;
+    display: flex;
+}
+
+#otherResults,
+#alphabetsResults {
+    margin: 0;
+    font-family: 'Seymour One', sans-serif;
+    word-wrap: break-word;
+    color: #ff5050;
+    font-weight: bold;
+}
+
+#otherResults {
+    font-size: 3vw;
+}
+
+#alphabetsResults {
+    font-size: 15vw;
+}
+
+@media only screen and (max-width: 900px) {
+    #tabsBar {
+        justify-content: space-evenly;
+        gap: 0;
+    }
+    .tabButton {
+        width: 50px;
+    }
+    #mainView {
+        flex-direction: column-reverse;
+        padding: 0;
+    }
+    .SettingsCont {
+        width: 100%;
+        border-radius: 0;
+    }
+    .Results {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,9 @@
+#entriesPara {
+    border-radius: 8px;
+    background-color: lightgray;
+    width: 100%;
+    /* height: 70px; */
+    padding: 10px;
+    box-sizing: border-box;
+    /* overflow-y: scroll; */
+}
