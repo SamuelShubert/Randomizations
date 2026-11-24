@@ -1,0 +1,102 @@
+/* =========================================================
+   Entries tab
+   ========================================================= */
+
+.entry-input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.entry-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.entry-upload button {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.entry-note {
+    margin: 0;
+}
+
+.entry-note:empty {
+    display: none;
+}
+
+.entry-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.entry-list:empty {
+    display: none;
+}
+
+.entry {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 100%;
+    padding: 4px 4px 4px 12px;
+    background-color: var(--bg);
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.925rem;
+}
+
+.entry span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.entry.is-picked {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+}
+
+.entry button {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.entry button:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.entry-empty {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.925rem;
+}
+
+.entry-empty:empty {
+    display: none;
+}
+
+.entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+}

@@ -1,0 +1,93 @@
+/* =========================================================
+   3D dice drawn with CSS (no images)
+   Size and colours come from --die-size, --die-face and
+   --die-pip in main.css.
+   ========================================================= */
+
+.dice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    min-height: var(--die-size);
+}
+
+/* ---------- One face: a 3x3 grid of pip slots ---------- */
+
+.face {
+    width: var(--die-size);
+    height: var(--die-size);
+    padding: calc(var(--die-size) * 0.14);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: var(--die-face);
+    border: 2px solid var(--line);
+    border-radius: 18%;
+    box-shadow: inset calc(var(--die-size) * -0.05) calc(var(--die-size) * -0.05) 0 rgba(0, 0, 0, 0.08);
+}
+
+.pip {
+    width: 72%;
+    aspect-ratio: 1;
+    place-self: center;
+    border-radius: 50%;
+    background-color: var(--die-pip);
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- 3D cube: six faces folded into a box ---------- */
+
+.scene {
+    width: var(--die-size);
+    height: var(--die-size);
+    perspective: calc(var(--die-size) * 4);
+}
+
+.cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.cube .face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+}
+
+/* Opposite faces add up to 7, like a real die */
+.cube .f1 { transform: rotateY(0deg)   translateZ(calc(var(--die-size) / 2)); }
+.cube .f6 { transform: rotateY(180deg) translateZ(calc(var(--die-size) / 2)); }
+.cube .f3 { transform: rotateY(90deg)  translateZ(calc(var(--die-size) / 2)); }
+.cube .f4 { transform: rotateY(-90deg) translateZ(calc(var(--die-size) / 2)); }
+.cube .f2 { transform: rotateX(90deg)  translateZ(calc(var(--die-size) / 2)); }
+.cube .f5 { transform: rotateX(-90deg) translateZ(calc(var(--die-size) / 2)); }
+
+/* ---------- The tappable die on the home page ---------- */
+
+.home-die {
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 18%;
+    cursor: pointer;
+}
+
+.home-die:disabled {
+    cursor: progress;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cube {
+        transition-duration: 0.01s;
+    }
+}
+
+@media (max-width: 700px) {
+    .dice {
+        gap: 20px;
+    }
+}

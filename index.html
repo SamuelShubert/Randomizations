@@ -1,100 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Randomizations</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Samuel Shubert's learning project - Randomizations">
-    <meta name="keywords" content="Samuel, Shubert, random, randomizations, dice, numbers, alphabets, web, developer">
-    <meta name="author" content="Samuel Shubert">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizations</title>
+    <meta name="description" content="Roll dice, pick a random number or letter, or choose from your own list.">
+    <meta name="author" content="Samuel Shubert">
 
-    <link rel="icon" href="assets/tabicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Seymour+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Seymour+One&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css files/mainView.css">
-    <link rel="stylesheet" href="css files/diceView.css">
-    <link rel="stylesheet" href="css files/numbersView.css">
-    <link rel="stylesheet" href="css files/entriesView.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dice.css">
+    <link rel="stylesheet" href="css/entries.css">
 
-    <script src="scripts/mainView.js"></script>
-    <script src="scripts/diceView.js"></script>
-    <script src="scripts/numbersView.js"></script>
-    <script src="scripts/alphabetsView.js"></script>
-    <script src="scripts/entriesView.js"></script>
+    <!-- main.js must load first: the other scripts use its helpers -->
+    <script src="js/main.js" defer></script>
+    <script src="js/dice.js" defer></script>
+    <script src="js/numbers.js" defer></script>
+    <script src="js/letters.js" defer></script>
+    <script src="js/entries.js" defer></script>
 </head>
 
-<body onload="runFirst()">
+<body>
+    <header class="topbar">
+        <a href="#home" class="brand">Randomizations</a>
 
-    <header id="tabsBar">
-        <button onclick="changeView(this, 'HomeSubSettings')" class="tabButton tabButtonHover" id="HomeTab">
-            <img src="assets/HomeIcon.png" class="tabImg">
-        </button>
-        <button onclick="changeView(this, 'DiceSubSettings')" class="tabButton tabButtonHover" id="DiceTab">
-            <img src="assets/DiceIcon.png" class="tabImg">
-        </button>
-        <button onclick="changeView(this, 'NumbersSubSettings')" class="tabButton tabButtonHover" id="NumbersTab">
-            <img src="assets/NumbersIcon.png" class="tabImg">
-        </button>
-        <button onclick="changeView(this, 'AlphabetsSubSettings')" class="tabButton tabButtonHover" id="AlphabetsTab">
-            <img src="assets/AlphabetsIcon.png" class="tabImg">
-        </button>
-        <button onclick="changeView(this, 'EntriesSubSettings')" class="tabButton tabButtonHover" id="EntriesTab">
-            <img src="assets/EntriesIcon.png" class="tabImg">
-        </button>
-
-
+        <nav class="tabs" aria-label="Tools">
+            <a href="#home" class="tab" data-view="home">
+                <img src="assets/icons/home.png" alt="">
+                <span>Home</span>
+            </a>
+            <a href="#dice" class="tab" data-view="dice">
+                <img src="assets/icons/dice.png" alt="">
+                <span>Dice</span>
+            </a>
+            <a href="#numbers" class="tab" data-view="numbers">
+                <img src="assets/icons/numbers.png" alt="">
+                <span>Numbers</span>
+            </a>
+            <a href="#letters" class="tab" data-view="letters">
+                <img src="assets/icons/letters.png" alt="">
+                <span>Letters</span>
+            </a>
+            <a href="#entries" class="tab" data-view="entries">
+                <img src="assets/icons/entries.png" alt="">
+                <span>Entries</span>
+            </a>
+        </nav>
     </header>
 
-    <div id="mainView">
-        <div id="SettingsID" class="SettingsCont">
-            <div id="HomeSubSettings" class="SubSettings">
-                <p id="author">Created by Samuel Shubert<br>This website is still in development and<br> may contain few bugs here and there</p>
+    <main>
+        <!-- ================= Home ================= -->
+        <section class="view view-home" data-view="home">
+            <div class="home-intro">
+                <h1>Let chance decide.</h1>
+                <p class="lead">Roll dice, pick a number or a letter, or choose from your own list.</p>
+
+                <ul class="tool-list">
+                    <li>
+                        <a href="#dice">
+                            <img src="assets/icons/dice.png" alt="">
+                            <span><strong>Dice</strong>Roll one, two or three dice.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#numbers">
+                            <img src="assets/icons/numbers.png" alt="">
+                            <span><strong>Numbers</strong>Pick a number between any two values.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#letters">
+                            <img src="assets/icons/letters.png" alt="">
+                            <span><strong>Letters</strong>Pick a letter from the whole alphabet or a range.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#entries">
+                            <img src="assets/icons/entries.png" alt="">
+                            <span><strong>Entries</strong>Make a list and let it pick one.</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
-            <div id="DiceSubSettings" class="SubSettings">
-                <div class="SetNoOfDiceDiv">
-                    <button id="SetNoOfDice1" class="SetNoOfDice" onclick="DiceSet(0)">One</button>
-                    <button id="SetNoOfDice2" class="SetNoOfDice" onclick="DiceSet(1)">Two</button>
-                    <button id="SetNoOfDice3" class="SetNoOfDice" onclick="DiceSet(2)">Three</button>
+            <div class="panel stage home-stage">
+                <button class="home-die" id="homeDie" aria-label="Roll the die"></button>
+                <p class="hint">Tap the die to roll it</p>
+            </div>
+        </section>
+
+        <!-- ================= Dice ================= -->
+        <section class="view" data-view="dice" hidden>
+            <div class="panel controls">
+                <h2>Dice</h2>
+
+                <div class="field">
+                    <span class="field-label" id="diceCountLabel">Number of dice</span>
+                    <div class="segmented" role="group" aria-labelledby="diceCountLabel" id="diceCountButtons">
+                        <button type="button" data-value="1">One</button>
+                        <button type="button" data-value="2">Two</button>
+                        <button type="button" data-value="3">Three</button>
+                    </div>
                 </div>
-                <button onclick="rollDice()" class="RandomizeButton">Roll</button>
+
+                <button type="button" class="primary" id="rollButton" data-primary>Roll</button>
+                <p class="hint">or press <kbd>Space</kbd></p>
             </div>
 
-            <div id="NumbersSubSettings" class="SubSettings">
-                <input type="number" id="fromTxtFld" class="TxtFlds" placeholder="From" value="1" maxlength="14">
-                <input type="number" id="toTxtFld" class="TxtFlds" placeholder="To" value="10" maxlength="14">
-                <div class="NumberSetTypeDiv">
-                    <button id="NumberSetTypeButton1" class="NumberSetTypeButton" onclick="SetNumberType(0)">x 10<sup>0</sup></button>
-                    <button id="NumberSetTypeButton2" class="NumberSetTypeButton" onclick="SetNumberType(1)">x 10<sup>-2</sup></button>
-                    <button id="NumberSetTypeButton3" class="NumberSetTypeButton" onclick="SetNumberType(2)">x 10<sup>-4</sup></button>
+            <div class="panel stage">
+                <div class="dice" id="dice"></div>
+                <p class="visually-hidden" id="diceAnnouncement" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- ================= Numbers ================= -->
+        <section class="view" data-view="numbers" hidden>
+            <form class="panel controls" id="numbersForm" novalidate>
+                <h2>Numbers</h2>
+
+                <div class="range-fields">
+                    <div class="field">
+                        <label class="field-label" for="fromField">From</label>
+                        <input type="number" id="fromField" step="any" inputmode="decimal" value="1">
+                    </div>
+                    <div class="field">
+                        <label class="field-label" for="toField">To</label>
+                        <input type="number" id="toField" step="any" inputmode="decimal" value="10">
+                    </div>
                 </div>
-                <button onclick="randomNumber()" class="RandomizeButton">Randomize</button>
+
+                <div class="field">
+                    <span class="field-label" id="decimalsLabel">Decimal places</span>
+                    <div class="segmented" role="group" aria-labelledby="decimalsLabel" id="decimalsButtons">
+                        <button type="button" data-value="0" aria-label="Whole numbers">0</button>
+                        <button type="button" data-value="2" aria-label="2 decimal places">0.xx</button>
+                        <button type="button" data-value="4" aria-label="4 decimal places">0.xxxx</button>
+                    </div>
+                </div>
+
+                <p class="form-error" id="numbersError" role="alert"></p>
+
+                <button type="submit" class="primary" data-primary>Pick a number</button>
+                <p class="hint">or press <kbd>Enter</kbd></p>
+            </form>
+
+            <div class="panel stage">
+                <p class="result result-lg is-empty" id="numberResult" aria-live="polite">Your number appears here</p>
+            </div>
+        </section>
+
+        <!-- ================= Letters ================= -->
+        <section class="view" data-view="letters" hidden>
+            <div class="panel controls">
+                <h2>Letters</h2>
+
+                <div class="range-fields">
+                    <div class="field">
+                        <label class="field-label" for="letterFrom">From</label>
+                        <select id="letterFrom"></select>
+                    </div>
+                    <div class="field">
+                        <label class="field-label" for="letterTo">To</label>
+                        <select id="letterTo"></select>
+                    </div>
+                </div>
+                <p class="field-note" id="letterRangeNote"></p>
+
+                <div class="field">
+                    <span class="field-label" id="letterCaseLabel">Letter case</span>
+                    <div class="segmented" role="group" aria-labelledby="letterCaseLabel" id="letterCaseButtons">
+                        <button type="button" data-value="upper">ABC</button>
+                        <button type="button" data-value="lower">abc</button>
+                    </div>
+                </div>
+
+                <button type="button" class="primary" id="letterButton" data-primary>Pick a letter</button>
+                <p class="hint">or press <kbd>Space</kbd></p>
             </div>
 
-            <div id="AlphabetsSubSettings" class="SubSettings">
-                <button onclick="randomAlphabet()" class="RandomizeButton">Randomize</button>
+            <div class="panel stage">
+                <p class="result result-xl is-empty" id="letterResult" aria-live="polite">Your letter appears here</p>
+            </div>
+        </section>
+
+        <!-- ================= Entries ================= -->
+        <section class="view" data-view="entries" hidden>
+            <div class="panel controls">
+                <h2>Entries</h2>
+
+                <form class="field" id="entryForm">
+                    <label class="field-label" for="entryField">Add an entry</label>
+                    <div class="entry-input-row">
+                        <input type="text" id="entryField" maxlength="40" placeholder="e.g. Pizza" autocomplete="off">
+                        <button type="submit" class="secondary">Add</button>
+                    </div>
+                </form>
+
+                <div class="entry-upload">
+                    <input type="file" id="csvInput" accept=".csv,.txt,text/csv" hidden>
+                    <button type="button" class="secondary" id="csvButton">Upload CSV</button>
+                    <span>Each cell becomes an entry</span>
+                </div>
+
+                <p class="form-error" id="entryError" role="alert"></p>
+                <p class="field-note entry-note" id="entryNote" role="status"></p>
+
+                <ul class="entry-list" id="entryList" aria-label="Your entries"></ul>
+                <p class="entry-empty" id="entryEmpty"></p>
+
+                <div class="entry-footer" id="entryFooter">
+                    <span id="entryCount"></span>
+                    <button type="button" class="link-button" id="clearEntriesButton">Clear all</button>
+                </div>
+
+                <button type="button" class="primary" id="pickEntryButton" data-primary>Pick an entry</button>
+                <p class="hint">or press <kbd>Space</kbd></p>
             </div>
 
-            <div id="EntriesSubSettings" class="SubSettings">
-                <!-- <input type="text" id="EntriesTxtFld" class="TxtFlds" placeholder="Entries" maxlength="25"> -->
-                <p id="entriesPara">Still in development...</p>
-                <!-- <button onclick="randomEntry()" class="RandomizeButton">Randomize</button> -->
+            <div class="panel stage">
+                <p class="result result-md is-empty" id="entryResult" aria-live="polite">The picked entry appears here</p>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="Results">
-            <p id="otherResults">Randomizations</p>
-            <p id="alphabetsResults"></p>
-            <div id="DiceResults">
-                <img id="Dice1" class="DiceClass">
-                <img id="Dice2" class="DiceClass">
-                <img id="Dice3" class="DiceClass">
-            </div>
-        </div>
-    </div>
+    <footer class="footer">Made by Samuel Shubert</footer>
 </body>
 
 </html>
